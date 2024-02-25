@@ -12,12 +12,26 @@ g.add_edge("ZACK EFRON", "ZENDAYA", length = 1)
 g.add_edge("ZENDAYA", "TOM HOLLAND", length = 1)
 g.add_edge("TOM HOLLAND","JAMIE FOX", length = 1)
 g.add_edge("JAMIE FOX", "LA ROCA", length = 1)
-
-result = str(nx.dijkstra_path(g, source="LA ROCA", target="TOM HOLLAND"))
-typewrite(result, delay=0.05)
-
-nx.draw(g, with_labels = True, font_weight='bold')
-
+g.add_edge("KEVIN COSTNER", "lESLY MANVILLE", length = 1)
+g.add_edge("lESLY MANVILLE", "ANGELINA JOLIE", length = 1)
+g.add_edge("ANGELINA JOLIE", "JACK BLACK", length = 1)
+g.add_edge("ANGELINA JOLIE", "BRAD PITT", length = 1)
+g.add_edge("JACK BLACK", "LA ROCA", length = 1)
+g.add_edge("JAMIE FOX", "WILL SMITH", length = 1)
+g.add_edge("WILL SMITH", "MARGOT ROBBIE", length = 1)
+g.add_edge("MARGOT ROBBIE", "LEONARDO DICAPRIO", length=1)
+g.add_edge("MARGOT ROBBIE", "BRAD PITT", length=1)
+g.add_edge("LEONARDO DICAPRIO", "BRAD PITT", length=1)
+pos = nx.spring_layout(g, k=1.20)
+result = str(nx.dijkstra_path(g, source="LA ROCA", target="BRAD PITT"))
+typewrite('Los actores que conectan a La ROCA y a BRAD PITT son:', delay=0.1)
+if (result):
+       typewrite(result, delay=0.1)
+else:
+    result = str(nx.dijkstra_path(g, source="LA ROCA", target="MARGOT ROBBIE"))
+    typewrite(result, delay=0.1)
+    
+nx.draw (g, pos, with_labels = True, font_weight='bold', node_size = 5000)
 plt.show()
 
 
