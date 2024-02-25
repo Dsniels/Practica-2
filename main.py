@@ -1,6 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-
+from unratedwriting import typewrite
 
 g = nx.DiGraph()
 g.add_edge("O", "C", length=1)
