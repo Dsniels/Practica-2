@@ -14,7 +14,7 @@ g.add_edge("TOM HOLLAND","JAMIE FOX", length = 1)
 g.add_edge("JAMIE FOX", "LA ROCA", length = 1)
 
 result = str(nx.dijkstra_path(g, source="LA ROCA", target="TOM HOLLAND"))
-typewrite(result, delay=0.02)
+typewrite(result, delay=0.05)
 
 nx.draw(g, with_labels = True, font_weight='bold')
 
