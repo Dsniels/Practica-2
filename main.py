@@ -3,35 +3,21 @@ import matplotlib.pyplot as plt
 from unratedwriting import typewrite
 
 g = nx.DiGraph()
-g.add_edge("O", "C", length=1)
-g.add_edge("O", "A", length=4)
-g.add_edge("A", "E", length=3)
-g.add_edge("A", "O", length=4)
-g.add_edge("A", "B", length=2)
-g.add_edge("C", "B", length=2)
-g.add_edge("C", "O", length=2)
-g.add_edge("C", "D", length=3)
-g.add_edge("B", "F", weigth=4)
-g.add_edge("B", "A", weigth=4)
-g.add_edge("B", "C", weigth=4)
-g.add_edge("B", "G", weigth=4)
-g.add_edge("D", "E", weigth=4)
-g.add_edge("D", "C", weigth=4)
-g.add_edge("E", "F", weigth=3)
-g.add_edge("E", "A", weigth=3)
-g.add_edge("E", "D", weigth=3)
-g.add_edge("F", "G", weigth=2)
-g.add_edge("F", "B", weigth=4)
-g.add_edge("F", "E", weigth=3)
-g.add_edge("G", "B", weigth=4)
-g.add_edge("G", "F", weigth=2)
 
-resultado = nx.dijkstra_path(g, source="G", target="O")
-lg = nx.dijkstra_path_length(g, source="G", target="O")
+g.add_edge("LA ROCA", "PAUL WALKER", length = 1)
+g.add_edge("LA ROCA", "RYAN REINOLDS", length = 1)
+g.add_edge("RYAN REINOLDS", "HUGH JACKMAN", length = 1)
+g.add_edge("HUGH JACKMAN", "ZACK EFRON", length = 1)
+g.add_edge("ZACK EFRON", "ZENDAYA", length = 1)
+g.add_edge("ZENDAYA", "TOM HOLLAND", length = 1)
+g.add_edge("TOM HOLLAND","JAMIE FOX", length = 1)
+g.add_edge("JAMIE FOX", "LA ROCA", length = 1)
 
-print(resultado, lg)
+result = str(nx.dijkstra_path(g, source="LA ROCA", target="TOM HOLLAND"))
+typewrite(result, delay=0.02)
 
-nx.draw(g, with_labels=True, font_weight='bold')
-
+nx.draw(g, with_labels = True, font_weight='bold')
 
 plt.show()
+
+
