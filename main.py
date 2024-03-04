@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 import pyvis
 from pyvis.network import Network
 
@@ -17,4 +18,6 @@ net.add_edges([(1,3,5), (2,4,10), (3,6,11), (5,4,3), (2,5,4), (2,6,6), (4,3,1), 
 
 net.show_buttons(filter_=['physics'])
 net.show("red.html", notebook=False)
+
+
 
