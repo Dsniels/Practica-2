@@ -1,6 +1,5 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-<<<<<<< HEAD
 import pyvis
 from pyvis.network import Network
 
