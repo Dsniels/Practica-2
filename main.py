@@ -1,23 +1,45 @@
-import networkx as nx
-import matplotlib.pyplot as plt
-<<<<<<< HEAD
-import pyvis
+import time 
+from tqdm import tqdm
 from pyvis.network import Network
+import pandas as pd 
+
+net  = Network(height="750px",font_color=True, width="100%", bgcolor="#222222", cdn_resources="remote")
+data = pd.read_csv('Libro1.csv')
+
+n = len(set(data['nodo 1']).union(set(data['nodo 2'])))
+m = len(data)
+
+grados = data['nodo 1']._append(data['nodo 2']).value_counts()
 
 
-net = Network(height="750px",font_color=True, width="100%", bgcolor="#222222", cdn_resources="remote")
+total = len(data)
+source = data['nodo 1']
+target = data['nodo 2']
 
+edge_data = zip(source, target)
+progress = tqdm(total=total, desc="Creando nodos")
+for e in edge_data:
+    src = e[0]
+    trg = e[1]
 
+    net.add_node(src, src, title = src)
+    net.add_node(trg,label=trg, title = src)
+    net.add_edge(src, trg)
+    progress.update(1)
 
+vecino = net.get_adj_list()
 
-net.add_nodes([1,2,3,4,5,6,7,8,9,10], label = ['David','Daniel', 'Liz','Mike','Daniel de la Fuente','Blanca','Barbara','DaniLentes','Hugo','Norma'])
-net.add_edges([(1,3,5), (2,4,10), (3,6,11), (5,4,3), (2,5,4), (2,6,6), (4,3,1), (7,2,3), (8,3,5), (1,9,10), (9,10,10),(2,3,20)])
+for e in net.nodes:
+    e['title'] += " vecinos: " + ',' .join(vecino[e['id']])
 
-
-
-
-net.show_buttons(filter_=['physics'])
-net.show("red.html", notebook=False)
+progress.close()
+time.sleep(1)
+print(f'Numero de vertices: {n}')
+print(f'Numero de Aristas: {m}')
+print(f'Grados de cada vertice:')
+print(grados)
+time.sleep(1)
+net.show("Red de amigos.html", notebook=False)
 
 
 
